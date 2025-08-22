@@ -9,4 +9,7 @@ public class Joke {
     @JsonProperty("value")
     private String joke;
 
+    public String getJoke() {
+        return joke;
+    }
 }

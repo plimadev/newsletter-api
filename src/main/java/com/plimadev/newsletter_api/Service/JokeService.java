@@ -22,6 +22,7 @@ public class JokeService {
                 .retrieve()
                 .bodyToMono(Joke.class)
                 .map(Joke::getJoke);
+
     }
 
 }
