@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/jokes")
 public class JokeController {
@@ -19,7 +21,12 @@ public class JokeController {
 
 
     @GetMapping("/random")
-    public Mono<String> getRandomJoke(){
+    public String getRandomJoke(){
         return jokeService.getRandomJoke();
+    }
+
+    @GetMapping("/categories")
+    public List<String> getCategories(){
+        return jokeService.getCategories();
     }
 }
