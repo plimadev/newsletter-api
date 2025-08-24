@@ -3,6 +3,7 @@ package com.plimadev.newsletter_api.Controller;
 import com.plimadev.newsletter_api.Service.JokeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
@@ -28,5 +29,10 @@ public class JokeController {
     @GetMapping("/categories")
     public List<String> getCategories(){
         return jokeService.getCategories();
+    }
+
+    @GetMapping("/{category}")
+    public String getJokeByCategory(@PathVariable String category) {
+        return jokeService.getJokeByCategory(category);
     }
 }

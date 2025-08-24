@@ -36,4 +36,16 @@ public class JokeService {
                 .block();
     }
 
+    public String getJokeByCategory(String category){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("jokes/random")
+                        .queryParam(category, "category")
+                        .build())
+                .retrieve()
+                .bodyToMono(Joke.class)
+                .map(Joke::getJoke)
+                .block();
+    }
+
 }
