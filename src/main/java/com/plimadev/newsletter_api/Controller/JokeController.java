@@ -1,12 +1,11 @@
 package com.plimadev.newsletter_api.Controller;
 
 import com.plimadev.newsletter_api.Service.JokeService;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -16,12 +15,12 @@ public class JokeController {
 
     private JokeService jokeService;
 
+    @Autowired
     public JokeController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
 
-
-    @GetMapping("/random")
+    @GetMapping("/randomJoke")
     public String getRandomJoke(){
         return jokeService.getRandomJoke();
     }
