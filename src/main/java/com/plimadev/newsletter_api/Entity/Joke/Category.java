@@ -5,7 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Categories {
-    private List<String> categories;
+public class Category {
+
+
+    private String value;
 
 }

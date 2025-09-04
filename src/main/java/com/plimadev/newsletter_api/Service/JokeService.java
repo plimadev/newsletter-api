@@ -1,6 +1,5 @@
 package com.plimadev.newsletter_api.Service;
 
-import com.plimadev.newsletter_api.Entity.Joke.Categories;
 import com.plimadev.newsletter_api.Entity.Joke.Joke;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -20,12 +19,13 @@ public class JokeService {
 
     public String getRandomJoke(){
 
-        return webClient.get()
+        Joke response = webClient.get()
                 .uri("/jokes/random")
                 .retrieve()
                 .bodyToMono(Joke.class)
-                .map(Joke::getJoke)
                 .block();
+        
+        return response.getValue();
     }
 
     public List<String> getCategories() {

@@ -1,13 +1,26 @@
 package com.plimadev.newsletter_api.Entity.Joke;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
-//check why I needed to add the getter manually
+
 @Data
+@Table(name = "jokes")
+@Entity
 public class Joke {
 
-    @JsonProperty("value")
-    private String joke;
+    @Id
+    private String id;
+
+
+    @Column(name = "joke")
+    private String value;
+
+    @Column(name = "category")
+    private String jokeCategory;
 
 }
