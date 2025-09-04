@@ -19,13 +19,13 @@ public class JokeService {
 
     public String getRandomJoke(){
 
-        Joke response = webClient.get()
+        Joke joke = webClient.get()
                 .uri("/jokes/random")
                 .retrieve()
                 .bodyToMono(Joke.class)
                 .block();
         
-        return response.getValue();
+        return joke.getValue();
     }
 
     public List<String> getCategories() {
@@ -37,15 +37,16 @@ public class JokeService {
     }
 
     public String getJokeByCategory(String category){
-        return webClient.get()
+        Joke joke = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("jokes/random")
-                        .queryParam(category, "category")
+                        .queryParam("category", category)
                         .build())
                 .retrieve()
                 .bodyToMono(Joke.class)
-                .map(Joke::getJoke)
                 .block();
+
+        return joke.getValue();
     }
 
 }

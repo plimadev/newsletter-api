@@ -10,5 +10,5 @@ import java.util.List;
 public interface JokeRepository extends JpaRepository<Joke, Long> {
 
     List<Joke> findAll();
-    Joke findByJokecategory(String category);
+    Joke findByJokeCategory(String category);
 }
