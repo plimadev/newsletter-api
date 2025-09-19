@@ -22,7 +22,6 @@ public class LocationSearchService {
 
 
     public List<Location> locationSearch(String query){
-
         List<Location> response = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/locations/v1/cities/autocomplete")
@@ -35,5 +34,19 @@ public class LocationSearchService {
                 .block();
         
         return response;
+    }
+
+
+    public Location getLocationByKey(String locationKey){
+        Location response = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/locations/v1/{locationKey}")
+                        .queryParam("apikey", apiKey)
+                        .build(locationKey))
+                .retrieve()
+                .bodyToMono(Location.class)
+                .block();
+        return response;
+
     }
 }
